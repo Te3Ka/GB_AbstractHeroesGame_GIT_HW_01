@@ -1,3 +1,5 @@
+package AbstractHeroes.Wizards;
+
 public class WizardsWitch extends AbstractWizards {
 	String[] spells;
 	
@@ -24,5 +26,9 @@ public class WizardsWitch extends AbstractWizards {
 		for (int i = 0; i < spells.length; i++) {
 			System.out.println(">> Spell #" + (i + 1) + ": " + spells[i]);
 		}
+	}
+
+	@Override
+	public void step() {
 	}
 }

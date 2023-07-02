@@ -1,3 +1,7 @@
+package AbstractHeroes.Healers;
+
+import AbstractHeroes.AbstractHeroes;
+
 public abstract class AbstractHealers extends AbstractHeroes {
 	int maxManaPoints;
 	int healing;

@@ -1,3 +1,7 @@
+package AbstractHeroes.Wizards;
+
+import AbstractHeroes.AbstractHeroes;
+
 public abstract class AbstractWizards extends AbstractHeroes {
 	int maxMana;
 	int numSpells;

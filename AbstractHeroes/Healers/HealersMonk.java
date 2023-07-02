@@ -1,10 +1,12 @@
-public class HealersApothecary extends AbstractHealers {
+package AbstractHeroes.Healers;
+
+public class HealersMonk extends AbstractHealers {
 	String special;
 	
-	public HealersApothecary(String name) {
-		super(name, "Apothecary", 50, 1, 4,
-				1, 11, 70, 15);
-		this.special = "Fog of Healing";
+	public HealersMonk(String name) {
+		super(name, "Monk", 30, 5, 2,
+				1, 13, 100, 10);
+		this.special = "Meditation";
 	}
 
 	public void printParameters() {
@@ -17,5 +19,10 @@ public class HealersApothecary extends AbstractHealers {
 		System.out.println("Range attack: " + rangeAttack);
 		System.out.println("Initiative: " + initiative);
 		System.out.println("Special movement: " + special);
+	}
+
+	@Override
+	public void step() {
+
 	}
 }

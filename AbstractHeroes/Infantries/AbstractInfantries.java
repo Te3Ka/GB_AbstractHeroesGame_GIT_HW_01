@@ -1,3 +1,7 @@
+package AbstractHeroes.Infantries;
+
+import AbstractHeroes.AbstractHeroes;
+
 public abstract class AbstractInfantries extends AbstractHeroes {
 	int maxRagePoints;
 	int maxEnergyPoints;

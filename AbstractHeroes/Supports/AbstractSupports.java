@@ -1,3 +1,7 @@
+package AbstractHeroes.Supports;
+
+import AbstractHeroes.AbstractHeroes;
+
 public abstract class AbstractSupports extends AbstractHeroes {
 	int maxEnergyPoints;
 	int maxSupportPoints;
