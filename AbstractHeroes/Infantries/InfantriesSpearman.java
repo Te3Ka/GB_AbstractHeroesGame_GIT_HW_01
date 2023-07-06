@@ -3,9 +3,9 @@ package AbstractHeroes.Infantries;
 public class InfantriesSpearman extends AbstractInfantries {
 	String special;
 	
-	public InfantriesSpearman(String name) {
-		super(name, "Spearman", 40, 30, 15,
-				2, 10, 40, 30);
+	public InfantriesSpearman(String name, int coorX, int coorY) {
+		super(name, "Spearman", 40, 20, 30, 15,
+				2, 10, 40, 30, coorX, coorY);
 		this.special = "Spear puncture";
 	}
 
@@ -15,15 +15,12 @@ public class InfantriesSpearman extends AbstractInfantries {
 		System.out.println("Max hit points: " + maxHitPoints);
 		System.out.println("Max energy points: " + maxEnergyPoints);
 		System.out.println("Max rage points: " + maxRagePoints);
-		System.out.println("Damage: " + damage);
+		System.out.println("Damage: " + maxDamage);
 		System.out.println("Armor: " + armor);
 		System.out.println("Range attack: " + rangeAttack);
 		System.out.println("Initiative: " + initiative);
 		System.out.println("Special movement: " + special);
-	}
-
-	@Override
-	public void step() {
+		System.out.println("Position: X: " + coorX() + " Y: " + coorY());
 
 	}
 }

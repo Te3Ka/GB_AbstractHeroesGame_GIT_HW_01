@@ -3,9 +3,9 @@ package AbstractHeroes.Healers;
 public class HealersMonk extends AbstractHealers {
 	String special;
 	
-	public HealersMonk(String name) {
-		super(name, "Monk", 30, 5, 2,
-				1, 13, 100, 10);
+	public HealersMonk(String name, int coorX, int coorY) {
+		super(name, "Monk", 30, 1, 5, 2,
+				1, 13, 100, 10, coorX, coorY);
 		this.special = "Meditation";
 	}
 
@@ -14,15 +14,12 @@ public class HealersMonk extends AbstractHealers {
 		System.out.println("Name hero: " + nameHero);
 		System.out.println("Max hit points: " + maxHitPoints);
 		System.out.println("Max mana points: " + maxManaPoints);
-		System.out.println("Damage: " + damage);
+		System.out.println("Damage: " + maxDamage);
 		System.out.println("Armor: " + armor);
 		System.out.println("Range attack: " + rangeAttack);
 		System.out.println("Initiative: " + initiative);
 		System.out.println("Special movement: " + special);
-	}
-
-	@Override
-	public void step() {
+		System.out.println("Position: X: " + coorX() + " Y: " + coorY());
 
 	}
 }

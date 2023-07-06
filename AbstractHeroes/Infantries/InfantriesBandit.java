@@ -3,9 +3,9 @@ package AbstractHeroes.Infantries;
 public class InfantriesBandit extends AbstractInfantries {
 	String special;
 	
-	public InfantriesBandit(String name) {
-		super(name, "Bandit", 50, 20, 8,
-				1, 15, 20, 50);
+	public InfantriesBandit(String name, int coorX, int coorY) {
+		super(name, "Bandit", 50, 10, 20, 8,
+				1, 15, 20, 50, coorX, coorY);
 		this.special = "Dodging an attack";
 	}
 
@@ -15,15 +15,12 @@ public class InfantriesBandit extends AbstractInfantries {
 		System.out.println("Max hit points: " + maxHitPoints);
 		System.out.println("Max energy points: " + maxEnergyPoints);
 		System.out.println("Max rage points: " + maxRagePoints);
-		System.out.println("Damage: " + damage);
+		System.out.println("Damage: " + maxDamage);
 		System.out.println("Armor: " + armor);
 		System.out.println("Range attack: " + rangeAttack);
 		System.out.println("Initiative: " + initiative);
 		System.out.println("Special movement: " + special);
-	}
-
-	@Override
-	public void step() {
+		System.out.println("Position: X: " + coorX() + " Y: " + coorY());
 
 	}
 }

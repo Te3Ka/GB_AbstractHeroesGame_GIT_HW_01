@@ -1,12 +1,12 @@
-package AbstractHeroes.Supports;
+package AbstractHeroes.Archers;
 
-public class SupportWisp extends AbstractSupports {
+public class ArchersSniper extends AbstractArchers {
 	String special;
 	
-	public SupportWisp(String name) {
-		super(name, "Wisp", 10, 1, 20,
-				1, 4, 200, 10);
-		this.special = "Blink";
+	public ArchersSniper(String name, int coorX, int coorY) {
+		super(name, "Sniper", 25, 10, 15, 3,
+				20, 3, 10, 30, coorX, coorY);
+		this.special = "Sniper Shoot";
 	}
 
 	public void printParameters() {
@@ -14,16 +14,11 @@ public class SupportWisp extends AbstractSupports {
 		System.out.println("Name hero: " + nameHero);
 		System.out.println("Max hit points: " + maxHitPoints);
 		System.out.println("Max energy points: " + maxEnergyPoints);
-		System.out.println("Max support points: " + maxSupportPoints);
-		System.out.println("Damage: " + damage);
+		System.out.println("Damage: " + maxDamage);
 		System.out.println("Armor: " + armor);
 		System.out.println("Range attack: " + rangeAttack);
 		System.out.println("Initiative: " + initiative);
 		System.out.println("Special movement: " + special);
-	}
-
-	@Override
-	public void step() {
-
+		System.out.println("Position: X: " + coorX() + " Y: " + coorY());
 	}
 }

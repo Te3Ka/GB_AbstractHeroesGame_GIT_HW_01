@@ -1,12 +1,12 @@
 package AbstractHeroes.Supports;
 
-public class SupportPeasant extends AbstractSupports {
+public class SupportsWisp extends AbstractSupports {
 	String special;
 	
-	public SupportPeasant(String name) {
-		super(name, "Peasant", 80, 2, 6,
-				1, 6, 20, 20);
-		this.special = "Running";
+	public SupportsWisp(String name, int coorX, int coorY) {
+		super(name, "Wisp", 10, 1, 1, 20,
+				1, 4, 200, 10, coorX, coorY);
+		this.special = "Blink";
 	}
 
 	public void printParameters() {
@@ -15,15 +15,12 @@ public class SupportPeasant extends AbstractSupports {
 		System.out.println("Max hit points: " + maxHitPoints);
 		System.out.println("Max energy points: " + maxEnergyPoints);
 		System.out.println("Max support points: " + maxSupportPoints);
-		System.out.println("Damage: " + damage);
+		System.out.println("Damage: " + maxDamage);
 		System.out.println("Armor: " + armor);
 		System.out.println("Range attack: " + rangeAttack);
 		System.out.println("Initiative: " + initiative);
 		System.out.println("Special movement: " + special);
-	}
-
-	@Override
-	public void step() {
+		System.out.println("Position: X: " + coorX() + " Y: " + coorY());
 
 	}
 }
