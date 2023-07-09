@@ -18,7 +18,7 @@ public abstract class AbstractSupports extends AbstractHeroes {
     }
 
     @Override
-    public void step(ArrayList<AbstractHeroes> enemies) {
+    public void step(ArrayList<AbstractHeroes> enemies, ArrayList<AbstractHeroes> allies) {
         super.findNearestEnemy(enemies);
     }
 }

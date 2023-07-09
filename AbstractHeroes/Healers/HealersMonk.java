@@ -5,7 +5,7 @@ public class HealersMonk extends AbstractHealers {
 	
 	public HealersMonk(String name, int coorX, int coorY) {
 		super(name, "Monk", 30, 1, 5, 2,
-				1, 13, 100, 10, coorX, coorY);
+				1, 6, 100, 10, coorX, coorY);
 		this.special = "Meditation";
 	}
 
