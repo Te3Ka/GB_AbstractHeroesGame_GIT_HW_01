@@ -1,5 +1,9 @@
 package AbstractHeroes.Healers;
 
+import AbstractHeroes.AbstractHeroes;
+
+import java.util.ArrayList;
+
 public class HealersMonk extends AbstractHealers {
 	String special;
 	
@@ -20,6 +24,5 @@ public class HealersMonk extends AbstractHealers {
 		System.out.println("Initiative: " + initiative);
 		System.out.println("Special movement: " + special);
 		System.out.println("Position: X: " + coorX() + " Y: " + coorY());
-
 	}
 }

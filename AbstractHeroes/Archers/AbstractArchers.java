@@ -1,6 +1,8 @@
 package AbstractHeroes.Archers;
 
 import AbstractHeroes.AbstractHeroes;
+import AbstractHeroes.Supports.AbstractSupports;
+import AbstractHeroes.Supports.SupportsPeasant;
 
 import java.util.ArrayList;
 
@@ -30,8 +32,12 @@ public abstract class AbstractArchers extends AbstractHeroes {
         System.out.println("Arrows: " + currentArrows);
         middleDamageShoot(nearestEnemy);
         for (AbstractHeroes peasant: allies) {
-            if (peasant.getTypeHero().equals("Peasant")) {
-                return;
+            if (peasant.getTypeHero().equals("Peasant") &&
+                !peasant.isDead() &&
+                !((AbstractSupports)(peasant)).isBusyness()) {
+                    ((AbstractSupports)(peasant)).setCurrentSupportPoints();
+                    ((AbstractSupports)(peasant)).setBusyness(true);
+                    return;
             }
         }
         this.currentArrows--;

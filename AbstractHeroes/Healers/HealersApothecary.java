@@ -1,5 +1,9 @@
 package AbstractHeroes.Healers;
 
+import AbstractHeroes.AbstractHeroes;
+
+import java.util.ArrayList;
+
 public class HealersApothecary extends AbstractHealers {
 	String special;
 	

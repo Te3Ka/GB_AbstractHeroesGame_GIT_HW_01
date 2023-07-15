@@ -12,114 +12,81 @@ import java.util.Random;
 
 public class GameAbstractHeroes {
     static Random random = new Random();
-
+    static ArrayList<AbstractHeroes> lightSide = new ArrayList<>();
+    static ArrayList<AbstractHeroes> darkSide = new ArrayList<>();
+    public static ArrayList<AbstractHeroes> initiativeSortArray = new ArrayList<>();
     public static void main(String[] args) {
-        ArrayList<AbstractHeroes> lightSide = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            lightSide.add(newRandomHero(true));
+            lightSide.add(newRandomHero(true, i + 1));
         }
-        System.out.println("Light Side: ");
-        for (AbstractHeroes hero : lightSide) {
-            System.out.println(">> " + hero.getSimpleDescription());
-        }
-        System.out.println("**********************************");
-        ArrayList<AbstractHeroes> darkSide = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            darkSide.add(newRandomHero(false));
+            darkSide.add(newRandomHero(false, i + 1));
         }
-        System.out.println("Dark Side: ");
-        for (AbstractHeroes hero : darkSide) {
-            System.out.println(">> " + hero.getSimpleDescription());
-        }
-
         // Сортировка по инициативе
-        ArrayList<AbstractHeroes> initiativeSortArray = new ArrayList<>();
         initiativeSortArray.addAll(lightSide);
         initiativeSortArray.addAll(darkSide);
         initiativeSortArray.sort((Comparator<AbstractHeroes>) (o1, o2) -> {
             if (o2.getInitiative() == o1.getInitiative()) {
                 int o2d100 = d100();
                 int o1d100 = d100();
-                if (o2d100 > o1d100) {
-                    return o2.getInitiative() - o1.getInitiative();
-                } else {
-                    return o1.getInitiative() - o2.getInitiative();
-                }
+                return o2d100 - o1d100;
             }
             return o2.getInitiative() - o1.getInitiative();
         });
 
-        System.out.println("*".repeat(30));
-        System.out.println("*".repeat(30));
-        System.out.println("*".repeat(30));
+        View.view();
 
         for (AbstractHeroes hero : initiativeSortArray) {
             if (lightSide.contains(hero)) {
-                System.out.println("Light Side: ");
                 hero.step(darkSide, lightSide);
             } else {
-                System.out.println("Dark Side: ");
                 hero.step(lightSide, darkSide);
             }
         }
-
-        System.out.println("*".repeat(30));
-        System.out.println("*".repeat(30));
-        System.out.println("*".repeat(30));
-
-        System.out.println("Light Side: ");
-        for (AbstractHeroes hero : lightSide) {
-            System.out.println(">> " + hero.getSimpleDescription());
-        }
-        System.out.println("*".repeat(30));
-        System.out.println("Dark Side: ");
-        for (AbstractHeroes hero : darkSide) {
-            System.out.println(">> " + hero.getSimpleDescription());
-        }
     }
 
-    public static AbstractHeroes newRandomHero(boolean side) {
+    public static AbstractHeroes newRandomHero(boolean side, int coor) {
         return switch (random.nextInt(10)) {
             case 0 -> new ArchersCrossbowman(
                     NamesHeroes.values()[random.nextInt(NamesHeroes.values().length)].toString(),
                     side ? 1 : 10,
-                    random.nextInt(1, 51));
+                    coor);
             case 1 -> new ArchersSniper(
                     NamesHeroes.values()[random.nextInt(NamesHeroes.values().length)].toString(),
                     side ? 1 : 10,
-                    random.nextInt(1, 51));
+                    coor);
             case 2 -> new HealersApothecary(
                     NamesHeroes.values()[random.nextInt(NamesHeroes.values().length)].toString(),
                     side ? 1 : 10,
-                    random.nextInt(1, 51));
+                    coor);
             case 3 -> new HealersMonk(
                     NamesHeroes.values()[random.nextInt(NamesHeroes.values().length)].toString(),
                     side ? 1 : 10,
-                    random.nextInt(1, 51));
+                    coor);
             case 4 -> new InfantriesBandit(
                     NamesHeroes.values()[random.nextInt(NamesHeroes.values().length)].toString(),
                     side ? 1 : 10,
-                    random.nextInt(1, 51));
+                    coor);
             case 5 -> new InfantriesSpearman(
                     NamesHeroes.values()[random.nextInt(NamesHeroes.values().length)].toString(),
                     side ? 1 : 10,
-                    random.nextInt(1, 51));
+                    coor);
             case 6 -> new WizardsMage(
                     NamesHeroes.values()[random.nextInt(NamesHeroes.values().length)].toString(),
                     side ? 1 : 10,
-                    random.nextInt(1, 51));
+                    coor);
             case 7 -> new WizardsWitch(
                     NamesHeroes.values()[random.nextInt(NamesHeroes.values().length)].toString(),
                     side ? 1 : 10,
-                    random.nextInt(1, 51));
+                    coor);
             case 8 -> new SupportsPeasant(
                     NamesHeroes.values()[random.nextInt(NamesHeroes.values().length)].toString(),
                     side ? 1 : 10,
-                    random.nextInt(1, 51));
+                    coor);
             case 9 -> new SupportsWisp(
                     NamesHeroes.values()[random.nextInt(NamesHeroes.values().length)].toString(),
                     side ? 1 : 10,
-                    random.nextInt(1, 51));
+                    coor);
             default -> null;
         };
     }

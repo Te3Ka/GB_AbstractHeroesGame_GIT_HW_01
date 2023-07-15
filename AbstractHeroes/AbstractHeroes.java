@@ -56,7 +56,7 @@ public abstract class AbstractHeroes implements InGame {
     }
 
     public String getSimpleDescription() {
-        return nameHero + " " + typeHero + " HP: " + currentHitPoints + " " + place.printCoordinates();
+        return nameHero + " " + typeHero + " HP: " + currentHitPoints + "/" + maxHitPoints + " ";
     }
     @Override
     public int coorX() {
@@ -72,8 +72,14 @@ public abstract class AbstractHeroes implements InGame {
             this.currentHitPoints = this.maxHitPoints;
         else
             this.currentHitPoints = currentHitPoints - changesHitPoints;
-        if (this.currentHitPoints <= 0)
+        if (this.currentHitPoints <= 0) {
+            this.currentHitPoints = 0;
             this.dead = true;
+        }
+    }
+
+    public int getMaxHitPoints() {
+        return maxHitPoints;
     }
 
     public int getCurrentHitPoints() {
@@ -94,6 +100,19 @@ public abstract class AbstractHeroes implements InGame {
 
     public int getInitiative() {
         return initiative;
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public Grid getPlace() {
+        return place;
+    }
+
+    @Override
+    public String toString() {
+        return super.getClass().getSimpleName();
     }
 }
 

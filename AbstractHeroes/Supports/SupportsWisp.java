@@ -4,7 +4,7 @@ public class SupportsWisp extends AbstractSupports {
 	String special;
 	
 	public SupportsWisp(String name, int coorX, int coorY) {
-		super(name, "Wisp", 10, 1, 1, 20,
+		super(name, "Wisp", 10, 1, 1, 15,
 				1, 1, 200, 10, coorX, coorY);
 		this.special = "Blink";
 	}
