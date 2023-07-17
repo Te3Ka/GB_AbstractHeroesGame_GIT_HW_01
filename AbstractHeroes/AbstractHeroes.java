@@ -35,7 +35,8 @@ public abstract class AbstractHeroes implements InGame {
     }
 
     /**
-     * Поиск ближайшего противника среди всех противников
+     * Поиск ближайшего живого противника среди всех противников
+     *
      * @param enemies
      */
     public AbstractHeroes findNearestEnemy(ArrayList<AbstractHeroes> enemies) {
@@ -43,25 +44,33 @@ public abstract class AbstractHeroes implements InGame {
         double minDistance = Math.sqrt(Math.pow(10, 2) + Math.pow(50, 2)); // Максимальная дистанция по диагонале сетки
         int minEnemy = 0;
         for (int i = 0; i < distance.length; i++) {
-            distance[i] = Math.sqrt(Math.pow(enemies.get(i).coorX() - place.getCoorX(), 2) +
-                    Math.pow(enemies.get(i).coorY() - place.getCoorY(), 2));
-            if (distance[i] < minDistance) {
-                minDistance = distance[i];
-                minEnemy = i;
+            if (enemies.get(i).getCurrentHitPoints() > 0 || !enemies.get(i).isDead()) {
+                distance[i] = Math.sqrt(Math.pow(enemies.get(i).coorX() - place.getCoorX(), 2) +
+                        Math.pow(enemies.get(i).coorY() - place.getCoorY(), 2));
+                if (distance[i] < minDistance) {
+                    minDistance = distance[i];
+                    minEnemy = i;
+                }
+            } else {
+                continue;
             }
         }
+        /*
         System.out.println("Ближайший противник для " + getSimpleDescription() +
                 "\n>>: " + enemies.get(minEnemy).getSimpleDescription());
+        */
         return enemies.get(minEnemy);
     }
 
     public String getSimpleDescription() {
         return nameHero + " " + typeHero + " HP: " + currentHitPoints + "/" + maxHitPoints + " ";
     }
+
     @Override
     public int coorX() {
         return place.getCoorX();
     }
+
     @Override
     public int coorY() {
         return place.getCoorY();
@@ -94,6 +103,7 @@ public abstract class AbstractHeroes implements InGame {
     public String getNameHero() {
         return nameHero;
     }
+
     public int getArmor() {
         return armor;
     }

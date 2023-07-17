@@ -25,11 +25,11 @@ public abstract class AbstractArchers extends AbstractHeroes {
      */
     @Override
     public void step(ArrayList<AbstractHeroes> enemies, ArrayList<AbstractHeroes> allies) {
-        System.out.println("!! Ходит " + nameHero + " " + typeHero);
+        //System.out.println("!! Ходит " + nameHero + " " + typeHero);
         if (this.dead || this.currentArrows == 0)
             return;
         AbstractHeroes nearestEnemy = super.findNearestEnemy(enemies);
-        System.out.println("Arrows: " + currentArrows);
+        //System.out.println("Arrows: " + currentArrows);
         middleDamageShoot(nearestEnemy);
         for (AbstractHeroes peasant: allies) {
             if (peasant.getTypeHero().equals("Peasant") &&
@@ -41,13 +41,13 @@ public abstract class AbstractArchers extends AbstractHeroes {
             }
         }
         this.currentArrows--;
-        System.out.println("Arrows: " + currentArrows);
+        //System.out.println("Arrows: " + currentArrows);
     }
 
     public void middleDamageShoot(AbstractHeroes enemy) {
         int middleDamage = (this.minDamage + this.maxDamage) / 2 - enemy.getArmor();
-        System.out.println("---" + nameHero + " " + typeHero + " Наносит урон в " + middleDamage + " " +
-                enemy.getNameHero() + " " + enemy.getTypeHero());
+        //System.out.println("---" + nameHero + " " + typeHero + " Наносит урон в " + middleDamage + " " +
+        //        enemy.getNameHero() + " " + enemy.getTypeHero());
         enemy.setCurrentHitPoints(enemy.getCurrentHitPoints(), middleDamage);
     }
 }

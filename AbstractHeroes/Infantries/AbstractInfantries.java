@@ -19,6 +19,68 @@ public abstract class AbstractInfantries extends AbstractHeroes {
 
     @Override
     public void step(ArrayList<AbstractHeroes> enemies, ArrayList<AbstractHeroes> allies) {
-        super.findNearestEnemy(enemies);
+        if (this.isDead() || this.currentHitPoints == 0)
+            return;
+
+        AbstractHeroes enemy = super.findNearestEnemy(enemies);
+        // Если рядом враг, то атакуем
+        if (this.place.calcDistance(enemy.getPlace()) < 2) {
+            middleDamage(enemy);
+            return;
+        }
+
+        if (Math.abs(this.coorX() - enemy.coorX()) >= Math.abs(this.coorY() - enemy.coorY())) {
+            if (this.coorX() < enemy.coorX()) {
+                boolean flag = true;
+                int tempX = coorX() + 1;
+                for (AbstractHeroes allie : allies) {
+                    if (tempX == allie.coorX() && this.coorY() == allie.coorY()) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag)
+                    this.place.setCoorX(this.coorX(), +1);
+            } else if (this.coorX() > enemy.coorX()) {
+                boolean flag = true;
+                int tempX = coorX() - 1;
+                for (AbstractHeroes allie : allies) {
+                    if (tempX == allie.coorX() && this.coorY() == allie.coorY()) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag)
+                    this.place.setCoorX(this.coorX(), -1);
+            }
+        } else if (this.coorY() < enemy.coorY()) {
+            boolean flag = true;
+            int tempX = coorY() + 1;
+            for (AbstractHeroes allie : allies) {
+                if (tempX == allie.coorY() && this.coorX() == allie.coorX()) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag)
+                this.place.setCoorY(this.coorY(), +1);
+        } else {
+            boolean flag = true;
+            int tempX = coorY() - 1;
+            for (AbstractHeroes allie : allies) {
+                if (tempX == allie.coorY() && this.coorX() == allie.coorX()) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag)
+                this.place.setCoorY(this.coorY(), -1);
+        }
+    }
+
+
+    public void middleDamage(AbstractHeroes enemyHero) {
+        enemyHero.setCurrentHitPoints(enemyHero.getCurrentHitPoints(),
+                ((this.minDamage + this.maxDamage) / 2) - enemyHero.getArmor());
     }
 }

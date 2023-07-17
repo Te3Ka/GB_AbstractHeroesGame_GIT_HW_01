@@ -9,12 +9,15 @@ import AbstractHeroes.Wizards.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.Scanner;
 
 public class GameAbstractHeroes {
     static Random random = new Random();
+	static Scanner scanner = new Scanner(System.in);
     static ArrayList<AbstractHeroes> lightSide = new ArrayList<>();
     static ArrayList<AbstractHeroes> darkSide = new ArrayList<>();
     public static ArrayList<AbstractHeroes> initiativeSortArray = new ArrayList<>();
+
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
             lightSide.add(newRandomHero(true, i + 1));
@@ -36,12 +39,17 @@ public class GameAbstractHeroes {
 
         View.view();
 
-        for (AbstractHeroes hero : initiativeSortArray) {
-            if (lightSide.contains(hero)) {
-                hero.step(darkSide, lightSide);
-            } else {
-                hero.step(lightSide, darkSide);
+        int i = 0;
+        while (true) {
+			scanner.nextLine();
+            for (AbstractHeroes hero : initiativeSortArray) {
+                if (lightSide.contains(hero)) {
+                    hero.step(darkSide, lightSide);
+                } else {
+                    hero.step(lightSide, darkSide);
+                }
             }
+            View.view();
         }
     }
 

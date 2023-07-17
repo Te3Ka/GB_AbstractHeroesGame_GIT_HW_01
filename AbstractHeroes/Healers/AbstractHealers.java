@@ -52,7 +52,7 @@ public abstract class AbstractHealers extends AbstractHeroes {
             }
         }
         if (maxDifferenceHitPoints == 0) {
-            System.out.println("Все здоровы или мертвы.");
+        //    System.out.println("Все здоровы или мертвы.");
             return this;
         }
         return allies.get(index);
