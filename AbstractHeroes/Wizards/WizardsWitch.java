@@ -4,7 +4,7 @@ public class WizardsWitch extends AbstractWizards {
 	String[] spells;
 	
 	public WizardsWitch(String name, int coorX, int coorY) {
-		super(name, "Witch", 40, 1, 3, 1,
+		super(name, "Witch", 40, 1, 3, 0,
 				5, 4, 100, 4, coorX, coorY);
 		this.spells = new String[4];
 		this.spells[0] = "Bat flight";

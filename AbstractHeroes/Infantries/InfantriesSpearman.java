@@ -4,7 +4,7 @@ public class InfantriesSpearman extends AbstractInfantries {
 	String special;
 	
 	public InfantriesSpearman(String name, int coorX, int coorY) {
-		super(name, "Spearman", 40, 20, 30, 15,
+		super(name, "Spearman", 40, 20, 30, 0,
 				2, 9, 40, 30, coorX, coorY);
 		this.special = "Spear puncture";
 	}

@@ -4,7 +4,7 @@ public class InfantriesBandit extends AbstractInfantries {
 	String special;
 	
 	public InfantriesBandit(String name, int coorX, int coorY) {
-		super(name, "Bandit", 50, 10, 20, 8,
+		super(name, "Bandit", 50, 10, 20, 0,
 				1, 10, 20, 50, coorX, coorY);
 		this.special = "Dodging an attack";
 	}

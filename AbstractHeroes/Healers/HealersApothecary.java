@@ -8,7 +8,7 @@ public class HealersApothecary extends AbstractHealers {
 	String special;
 	
 	public HealersApothecary(String name, int coorX, int coorY) {
-		super(name, "Apothecary", 50, 0, 3, 4,
+		super(name, "Apothecary", 50, 0, 3, 0,
 				1, 5, 70, 15, coorX, coorY);
 		this.special = "Fog of Healing";
 	}

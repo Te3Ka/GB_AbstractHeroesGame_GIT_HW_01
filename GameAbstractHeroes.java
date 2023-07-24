@@ -12,8 +12,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GameAbstractHeroes {
-    static Random random = new Random();
-	static Scanner scanner = new Scanner(System.in);
+    public static Random random = new Random();
+    static Scanner scanner = new Scanner(System.in);
     static ArrayList<AbstractHeroes> lightSide = new ArrayList<>();
     static ArrayList<AbstractHeroes> darkSide = new ArrayList<>();
     public static ArrayList<AbstractHeroes> initiativeSortArray = new ArrayList<>();
@@ -38,19 +38,40 @@ public class GameAbstractHeroes {
         });
 
         View.view();
-
-        int i = 0;
-        while (true) {
-			scanner.nextLine();
+        
+        int deadLightSide = 0, deadDarkSide = 0;
+        boolean nextStep = true;
+        while (nextStep) {
+            scanner.nextLine();
             for (AbstractHeroes hero : initiativeSortArray) {
+                deadLightSide = 0;
+                deadDarkSide = 0;
+                for (AbstractHeroes heroIsDead : lightSide) {
+                    if (heroIsDead.isDead()) {
+                        deadLightSide++;
+                    }
+                }
+                for (AbstractHeroes heroIsDead : darkSide) {
+                    if (heroIsDead.isDead()) {
+                        deadDarkSide++;
+                    }
+                }
+                if (deadLightSide == 10 || deadDarkSide == 10)
+                    nextStep = false;
                 if (lightSide.contains(hero)) {
                     hero.step(darkSide, lightSide);
                 } else {
                     hero.step(lightSide, darkSide);
                 }
             }
+            System.out.println("Light Sight dead = " + deadLightSide);
+            System.out.println("Dark Sight dead = " + deadDarkSide);
             View.view();
         }
+        if (deadLightSide == 10)
+            System.out.println("Победила Тёмная Сторона");
+        else
+            System.out.println("Победила Светлая Сторона");
     }
 
     public static AbstractHeroes newRandomHero(boolean side, int coor) {

@@ -8,8 +8,8 @@ public class ArchersCrossbowman extends AbstractArchers {
 	protected String special;
 	
 	public ArchersCrossbowman(String name, int coorX, int coorY) {
-		super(name, "Crossbowman", 40, 15, 30, 10,
-				10, 8, 5, 15, coorX, coorY);
+		super(name, "Crossbowman", 40, 15, 30, 0,
+				10, 8, 50, 15, coorX, coorY);
 		this.special = "Fast reload";
 	}
 

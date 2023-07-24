@@ -3,6 +3,7 @@ package AbstractHeroes;
 import Grid.Grid;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class AbstractHeroes implements InGame {
     protected String nameHero;
@@ -14,8 +15,9 @@ public abstract class AbstractHeroes implements InGame {
     protected int rangeAttack;
     protected int initiative;
     protected boolean dead = false;
-
     protected Grid place;
+
+    static Random random = new Random();
 
     public AbstractHeroes(String nameHero, String typeHero, int maxHitPoints,
                           int minDamage, int maxDamage, int armor, int rangeAttack, int initiative,
@@ -76,15 +78,17 @@ public abstract class AbstractHeroes implements InGame {
         return place.getCoorY();
     }
 
-    public void setCurrentHitPoints(int currentHitPoints, int changesHitPoints) {
-        if (currentHitPoints - changesHitPoints >= this.maxHitPoints)
+    public void setCurrentHitPoints(int changesHitPoints) {
+        if (changesHitPoints < 0) {
+            if (this.currentHitPoints + changesHitPoints <= 0) {
+                this.currentHitPoints = 0;
+                this.dead = true;
+            } else
+                this.currentHitPoints += changesHitPoints;
+        } else if (this.currentHitPoints + changesHitPoints > this.maxHitPoints)
             this.currentHitPoints = this.maxHitPoints;
         else
-            this.currentHitPoints = currentHitPoints - changesHitPoints;
-        if (this.currentHitPoints <= 0) {
-            this.currentHitPoints = 0;
-            this.dead = true;
-        }
+            this.currentHitPoints += changesHitPoints;
     }
 
     public int getMaxHitPoints() {
@@ -123,6 +127,29 @@ public abstract class AbstractHeroes implements InGame {
     @Override
     public String toString() {
         return super.getClass().getSimpleName();
+    }
+
+    public void setDamage(int minDamage, int maxDamage, AbstractHeroes enemy) {
+        if (minDamage == maxDamage) {
+            if (maxDamage > enemy.armor) {
+                enemy.setCurrentHitPoints(enemy.armor - maxDamage);
+            } else
+                enemy.setCurrentHitPoints(0);
+        } else {
+            int damage = random.nextInt(minDamage, maxDamage);
+            if (damage > enemy.armor) {
+                enemy.setCurrentHitPoints(enemy.armor - damage);
+            }
+        }
+    }
+
+    public void setHeal(int minHeal, int maxHeal, AbstractHeroes allay) {
+        if (minHeal == maxHeal)
+            allay.setCurrentHitPoints(maxHeal);
+        else {
+            int heal = random.nextInt(minHeal, maxHeal);
+            allay.setCurrentHitPoints(heal);
+        }
     }
 }
 

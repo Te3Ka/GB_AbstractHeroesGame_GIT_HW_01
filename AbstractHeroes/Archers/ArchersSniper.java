@@ -8,8 +8,8 @@ public class ArchersSniper extends AbstractArchers {
 	String special;
 	
 	public ArchersSniper(String name, int coorX, int coorY) {
-		super(name, "Sniper", 25, 10, 15, 3,
-				20, 7, 10, 30, coorX, coorY);
+		super(name, "Sniper", 25, 10, 15, 0,
+				20, 7, 50, 30, coorX, coorY);
 		this.special = "Sniper Shoot";
 	}
 

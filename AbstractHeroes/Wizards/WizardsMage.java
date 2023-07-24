@@ -4,7 +4,7 @@ public class WizardsMage extends AbstractWizards {
 	String[] spells;
 	
 	public WizardsMage(String name, int coorX, int coorY) {
-		super(name, "Mage", 30, 1, 5, 2,
+		super(name, "Mage", 30, 1, 5, 0,
 				4, 3, 200, 8, coorX, coorY);
 		this.spells = new String[8];
 		this.spells[0] = "Teleport";

@@ -30,7 +30,7 @@ public abstract class AbstractArchers extends AbstractHeroes {
             return;
         AbstractHeroes nearestEnemy = super.findNearestEnemy(enemies);
         //System.out.println("Arrows: " + currentArrows);
-        middleDamageShoot(nearestEnemy);
+        setDamage(this.minDamage, this.maxDamage, nearestEnemy);
         for (AbstractHeroes peasant: allies) {
             if (peasant.getTypeHero().equals("Peasant") &&
                 !peasant.isDead() &&
@@ -42,12 +42,5 @@ public abstract class AbstractArchers extends AbstractHeroes {
         }
         this.currentArrows--;
         //System.out.println("Arrows: " + currentArrows);
-    }
-
-    public void middleDamageShoot(AbstractHeroes enemy) {
-        int middleDamage = (this.minDamage + this.maxDamage) / 2 - enemy.getArmor();
-        //System.out.println("---" + nameHero + " " + typeHero + " Наносит урон в " + middleDamage + " " +
-        //        enemy.getNameHero() + " " + enemy.getTypeHero());
-        enemy.setCurrentHitPoints(enemy.getCurrentHitPoints(), middleDamage);
     }
 }

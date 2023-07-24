@@ -8,7 +8,7 @@ public class HealersMonk extends AbstractHealers {
 	String special;
 	
 	public HealersMonk(String name, int coorX, int coorY) {
-		super(name, "Monk", 30, 1, 5, 2,
+		super(name, "Monk", 30, 1, 5, 0,
 				1, 6, 100, 10, coorX, coorY);
 		this.special = "Meditation";
 	}

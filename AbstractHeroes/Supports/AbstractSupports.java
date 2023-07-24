@@ -22,7 +22,7 @@ public abstract class AbstractSupports extends AbstractHeroes {
 
     @Override
     public void step(ArrayList<AbstractHeroes> enemies, ArrayList<AbstractHeroes> allies) {
-        if (this.dead || this.currentSupportPoints == 0 || this.currentEnergyPoints == 0)
+        if (this.dead || this.currentSupportPoints == 0 || this.currentEnergyPoints == 0 || this.currentHitPoints == 0)
             return;
         this.busyness = false;
     }

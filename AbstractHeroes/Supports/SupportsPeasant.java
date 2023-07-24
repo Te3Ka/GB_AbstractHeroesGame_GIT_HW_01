@@ -4,7 +4,7 @@ public class SupportsPeasant extends AbstractSupports {
 	String special;
 
 	public SupportsPeasant(String name, int coorX, int coorY) {
-		super(name, "Peasant", 80, 1, 4, 6,
+		super(name, "Peasant", 80, 1, 4, 0,
 				1, 2, 20, 20, coorX, coorY);
 		this.special = "Running";
 	}

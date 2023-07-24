@@ -28,7 +28,7 @@ public class View {
         String out = "| ";
         for (AbstractHeroes hero: GameAbstractHeroes.initiativeSortArray) {
             if (hero.coorX() == x && hero.coorY() == y){
-                if (hero.getCurrentHitPoints() == 0) {
+                if (hero.getCurrentHitPoints() <= 0) {
                     out = "|" + (AnsiColors.ANSI_RED + hero.toString().charAt(0) + AnsiColors.ANSI_RESET);
                     break;
                 }

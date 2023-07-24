@@ -1,5 +1,4 @@
 package AbstractHeroes.Infantries;
-
 import AbstractHeroes.AbstractHeroes;
 
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public abstract class AbstractInfantries extends AbstractHeroes {
         AbstractHeroes enemy = super.findNearestEnemy(enemies);
         // Если рядом враг, то атакуем
         if (this.place.calcDistance(enemy.getPlace()) < 2) {
-            middleDamage(enemy);
+            setDamage(this.minDamage, this.maxDamage, enemy);
             return;
         }
 
@@ -76,11 +75,5 @@ public abstract class AbstractInfantries extends AbstractHeroes {
             if (flag)
                 this.place.setCoorY(this.coorY(), -1);
         }
-    }
-
-
-    public void middleDamage(AbstractHeroes enemyHero) {
-        enemyHero.setCurrentHitPoints(enemyHero.getCurrentHitPoints(),
-                ((this.minDamage + this.maxDamage) / 2) - enemyHero.getArmor());
     }
 }
